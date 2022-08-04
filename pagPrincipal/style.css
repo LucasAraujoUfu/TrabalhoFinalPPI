@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+}
+
+.topo{
+    background-color: #555;
+    color: #eee;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    position: sticky;
+}
+
+.busca{
+   padding: 9.5px 4px;
+   min-width: 30px;
+   font: inherit;
+   color: black;
+   width: 60%;
+   display: inline-flex;
+   position: relative;
+   border-radius: 4px;
+   background: aliceblue;
+   box-sizing: content-box;
+   letter-spacing: inherit;
+   font-family: Roboto, Verdana;
+}
+
+.avancada{
+    background-color: rgb(7, 7, 68);
+    color: white;
+    width: 20%;    
+    font-family: Roboto, Verdana;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+}   
+
+.busca>input, .busca>button{
+    border: none;
+    background: none;
+}
