@@ -1,0 +1,42 @@
+main{
+    width: 30%;
+    padding: 10px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div{
+    margin: 5px;
+    display: block;
+}
+
+input{
+    border: 1px solid rgb(174, 174, 174);
+    width: 90%;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.btn{
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+    height: 30px;
+    align-items: center;
+    background-color: rgb(220, 220, 220);
+}
+
+@media(max-width:600px){
+    main{
+        position: absolute;
+        left: 50%;
+        top: 70%;
+        transform: translate(-50%, -70%);
+    }
+}
