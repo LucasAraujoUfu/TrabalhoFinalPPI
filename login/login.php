@@ -20,8 +20,6 @@ function checkLogin($pdo,$email,$senha){
     }
 }
 
-
-
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
@@ -29,9 +27,7 @@ $email = $_POST["email"]??"";
 $senha = $_POST["senha"]??"";
 
 if(checkLogin($pdo,$email,$senha))
-    header("location: home.html");
+    header("location: ../restrita.html");
 else
     header("location: index.html");
-
-
 ?>
