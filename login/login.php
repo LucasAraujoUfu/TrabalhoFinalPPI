@@ -27,6 +27,8 @@ $email = $_POST["email"]??"";
 $senha = $_POST["senha"]??"";
 
 if(checkLogin($pdo,$email,$senha))
+    session_start();
+    $_SESSION['email'] = $email;
     header("location: ../restrita.html");
 else
     header("location: index.html");
