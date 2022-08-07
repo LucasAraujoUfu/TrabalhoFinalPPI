@@ -14,7 +14,7 @@
             <div class="logo"><img src="../images/logotipoCLL.png" alt="imagem contendo logo do site chamado CLL"></div>
             <div class="acesso">
                 <p>MINHA CONTA</p>
-                <a href="login.html">ENTRAR /</a><a href="cadastro/cadastro.html">CADASTRAR</a> 
+                <a href="login.html">ENTRAR /</a><a href="../cadastro/cadastro.html">CADASTRAR</a> 
             </div>
         </div>
     </header>
@@ -26,20 +26,65 @@
         </div>
     </nav>
     <main>
-        <form action="login.php" method="post">
+        <form>
             <div>
-                <label for="usuario">Usuário: </label>
-                <input type="text" name="usuario" id="usuario" required>
+                <label for="email">E-mail: </label>
+                <input type="email" name="email" id="email" required>
             </div>
             <div>
                 <label for="senha">Senha: </label>
                 <input type="password" name="senha" id="senha" required>
             </div>
             <div>
-                <button class="btn">Entrar</button>
+                <button type="button" id="btn">Entrar</button>
+            </div>
+            <div>
+                <p id="dadosIncorretos">Dados incorretos!</p>
             </div>
         </form>
     </main>
-    <footer>©2022 PPI-UFU</footer>
+    <footer><p>©2022 PPI-UFU</p></footer>
+
+    <script>
+        function enviaForm() {
+      
+      let xhr = new XMLHttpRequest();
+      
+      xhr.open("POST", "login.php");
+      xhr.onload = function () {
+        if (xhr.status != 200) {
+          console.error("Falha inesperada: " + xhr.responseText);
+          return;
+        }
+
+        try {
+          var response = JSON.parse(xhr.responseText);
+        }
+        catch (e) {
+          console.error("String JSON inválida: " + xhr.responseText);
+          return;
+        }
+
+        if (response.success)
+          window.location = response.detail;
+        else {
+          document.querySelector("#dadosIncorretos").style.display = 'block';
+          form.senha.value = "";
+          form.senha.focus();
+        }
+      }
+
+      xhr.onerror = function () {
+        console.error("Erro de rede - requisição não finalizada");
+      };
+
+      const form = document.querySelector("form");
+      xhr.send(new FormData(form));
+    }
+            window.onload = function () {
+                const btnLogin = document.querySelector("#btn");
+                btnLogin.onclick = enviaForm;
+            }
+    </script>
 </body>
 </html>
