@@ -31,7 +31,7 @@ try{
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$nome, $cpf, $email, $hash_senha, $telefone]);
 
-    header("location: ");
+    header("location: ../login/login.html");
     exit();
 }catch (Exception $e){
     if ($e->errorInfo[1] === 1062)

@@ -1,13 +1,12 @@
 body{    
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
-    height: 1000px;
     background-color: rgb(110, 109, 109);
     border: 0.8px none rgb(180, 178, 178);
     overflow: scroll;
 }
 
-a, p{
+a{
     text-decoration: none;
     color: white;
 }
@@ -16,14 +15,16 @@ header{
     width: 100%;
     display: block;
     box-sizing: border-box;
-    height: 10%;
+    padding: 10px;
+    height: 120px;
 }
 
 nav{
-    background-color: #555;
+    background-color: rgb(110, 109, 109);
     text-align: center;
     top: 0;
-    padding: 8px;
+    padding: 8px 20px;
+    height: 50px;
     position: sticky;
     display: flex;
     flex-direction: row;
@@ -32,16 +33,16 @@ nav{
 }
 
 main{
-
+    height: 540px;
+    margin-top: 15px;
 }
 
 footer {
     text-align: center;
     background-image: linear-gradient(#f2f2f2, #cccccc);
-    width: 100%;
-    height: 40px;
     bottom: 0;
     left: 0;
+    padding: 3px;
 }
 
 .topo{
@@ -58,6 +59,7 @@ footer {
 
 .logo>img{
     width: 100px;
+    margin: 10px 0;
     border-radius: 60px;
 }
 
@@ -92,13 +94,12 @@ footer {
 
 .busca > input{
     width: 90%;
-    border: none;
-    text-decoration: none;
 }
 
-.busca>input, .busca>button{
+.busca > input, .busca>button{
     border: none;
     background: none;
+    text-decoration: none;
 }
 
 @media(max-width:600px){
@@ -115,13 +116,24 @@ footer {
 }
 
 @media (min-width: 768px) {
-    main{
+    form{
         max-width: 720px;
     }
 }
 
 @media (min-width: 576px){
-    main{
+    form{
         max-width: 540px;
     }
+}
+
+textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+#dadosIncorretos {
+    display: none;
+    color: red;
+    text-align: center;
 }

@@ -1,35 +1,30 @@
 <?php
 
-function checkLogin($pdo,$email,$senha){
+require_once "../conexaoMysql.php";
+require_once "autenticacao.php";
+session_start();
 
-    $sql = <<<SQL
-        SELECT hash_senha
-        FROM anunciante
-        WHERE email = ?
-        SQL;
-    try{
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$email]);
-        $row = $stmt->fetch();
-        if(!$row)return false;
+class RequestResponse{
+  public $success;
+  public $detail;
 
-        return password_verify($senha,$row['hash_senha']);
-    }
-    catch(Exception $e){
-        exit('Falha inesperada: ' . $e->getMessage());
-    }
+  function __construct($success, $detail)
+  {
+    $this->success = $success;
+    $this->detail = $detail;
+  }
 }
 
-require "../conexaoMysql.php";
+
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
+
 $pdo = mysqlConnect();
+if($hash_senha = confereSenha($pdo, $email, $senha)){
+    $_SESSION['emailLogin'] = $email;
+    $_SESSION['loginString'] = hash('sha512', $hash_senha . $_SERVER['HTTP_USER_AGENT']);  
+    $response = new RequestResponse(true, 'restrita.php');
+}else
+$response = new RequestResponse(false, ''); 
 
-$email = $_POST["email"]??"";
-$senha = $_POST["senha"]??"";
-
-if(checkLogin($pdo,$email,$senha))
-    session_start();
-    $_SESSION['email'] = $email;
-    header("location: ../restrita.html");
-else
-    header("location: index.html");
-?>
+echo json_encode($response);

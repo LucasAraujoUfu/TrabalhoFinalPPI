@@ -1,14 +1,12 @@
-main{
+form{
     width: 50%;
     padding: 10px;
     margin-bottom: 15px;
-    height: auto;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(255, 255, 255);
-    position: absolute;
-    left: 50%;
-    top: 80%;
-    transform: translate(-50%, -80%);
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
 }
 
 div{
@@ -33,6 +31,10 @@ input:valid + span::after{
     color: limegreen;
 }
 
+.formCadastro{
+    width: 100%;
+}
+
 .btn{
     border-radius: 5px;
     border: none;
@@ -44,10 +46,7 @@ input:valid + span::after{
 
 @media(max-width:600px){
     main{
-        position: absolute;
-        width: 80%;
-        left: 50%;
-        top: 70%;
-        transform: translate(-50%, -70%);
+        display: inline;
+        margin: 10px;
     }
 }
