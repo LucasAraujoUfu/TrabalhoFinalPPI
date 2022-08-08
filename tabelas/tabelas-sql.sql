@@ -5,7 +5,7 @@ CREATE TABLE baseDeEnderecosAjax(
 )ENGINE=InnoDB;
 
 CREATE TABLE anunciante(
-   codigo int PRIMARY KEY auto_increment,
+   codigo_anunciante int PRIMARY KEY auto_increment,
    nome varchar(50),
    cpf char(14) UNIQUE,
    email varchar(50) UNIQUE,
@@ -14,13 +14,13 @@ CREATE TABLE anunciante(
 )ENGINE=InnoDB;
 
 CREATE TABLE categoria(
-   codigo int PRIMARY KEY auto_increment,
-   nome varchar(50),
+   codigo_categoria int PRIMARY KEY auto_increment,
+   categoria varchar(50),
    descricao varchar(300)
 )ENGINE=InnoDB;
 
 CREATE TABLE anuncio(
-   codigo int PRIMARY KEY auto_increment,
+   codigo_anuncio int PRIMARY KEY auto_increment,
    titulo varchar(50),
    descricao varchar(300),
    preco decimal(10,2),
@@ -30,9 +30,9 @@ CREATE TABLE anuncio(
    cidade varchar(50),
    estado char(10),
    codigo_categoria int not null,
-   FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo) ON DELETE CASCADE,
+   FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo),
    codigo_anunciante int not null,
-   FOREIGN KEY (codigo_anunciante) REFERENCES anunciante(codigo) ON DELETE CASCADE
+   FOREIGN KEY (codigo_anunciante) REFERENCES anunciante(codigo)
 )ENGINE=InnoDB;
 
 CREATE TABLE interesse(
@@ -41,11 +41,11 @@ CREATE TABLE interesse(
    data_hora datetime DEFAULT NULL,
    contato varchar(300),
    codigo_anuncio int not null,
-   FOREIGN KEY (codigo_anuncio) REFERENCES anuncio(codigo) ON DELETE CASCADE
+   FOREIGN KEY (codigo_anuncio) REFERENCES anuncio(codigo)
 )ENGINE=InnoDB;
 
 CREATE TABLE foto(
    nomeArqFoto varchar(50),
    codigo_anuncio int not null,
-   FOREIGN KEY (codigo_anuncio) REFERENCES anuncio(codigo) ON DELETE CASCADE
+   FOREIGN KEY (codigo_anuncio) REFERENCES anuncio(codigo)
 )ENGINE=InnoDB;

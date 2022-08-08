@@ -11,6 +11,7 @@ form{
 }
 
 div{
+    width: 90%;
     margin: 5px;
     display: block;
 }
@@ -21,22 +22,4 @@ input{
     height: 25px;
     border-radius: 5px;
     margin-top: 5px;
-}
-
-.btn{
-    border-radius: 5px;
-    border: none;
-    margin: 5px;
-    height: 30px;
-    align-items: center;
-    background-color: rgb(220, 220, 220);
-}
-
-@media(max-width:600px){
-    main{
-        position: absolute;
-        left: 50%;
-        top: 70%;
-        transform: translate(-50%, -70%);
-    }
 }

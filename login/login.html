@@ -21,8 +21,8 @@
     <nav>
         <button class="avancada" type="button">Busca avançada</button>
         <div class="busca">
-            <input type="text" width="" placeholder="Digite o produto desejado...">
-            <button type="submit"><a href=""><img src="../images/search-interface-symbol.png" alt="imagem do botão pesquisar"></a></button>
+            <input type="text" placeholder="Digite o produto desejado...">
+            <button type="submit"></button><a href="../busca/busca.html"><img src="../images/search-interface-symbol.png" alt="imagem do botão pesquisar"></a>
         </div>
     </nav>
     <main>
@@ -36,7 +36,7 @@
                 <input type="password" name="senha" id="senha" required>
             </div>
             <div>
-                <button type="button" id="btn">Entrar</button>
+                <button type="button" id="btns" class="btns">Entrar</button>
             </div>
             <div>
                 <p id="dadosIncorretos">Dados incorretos!</p>
@@ -82,7 +82,7 @@
       xhr.send(new FormData(form));
     }
             window.onload = function () {
-                const btnLogin = document.querySelector("#btn");
+                const btnLogin = document.querySelector("#btns");
                 btnLogin.onclick = enviaForm;
             }
     </script>

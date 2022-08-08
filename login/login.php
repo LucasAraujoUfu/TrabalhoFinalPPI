@@ -23,7 +23,7 @@ $pdo = mysqlConnect();
 if($hash_senha = confereSenha($pdo, $email, $senha)){
     $_SESSION['emailLogin'] = $email;
     $_SESSION['loginString'] = hash('sha512', $hash_senha . $_SERVER['HTTP_USER_AGENT']);  
-    $response = new RequestResponse(true, 'restrita.php');
+    $response = new RequestResponse(true, '../restrita/index.php');
 }else
 $response = new RequestResponse(false, ''); 
 
